@@ -30,7 +30,8 @@ export default {
   path: "/nested",
   meta: {
     title: "多级菜单",
-    rank: 1
+    rank: 3,
+    icon: "flowbite:address-book-outline"
   },
   children: [
     {
@@ -45,7 +46,8 @@ export default {
           name: "Menu1-1",
           meta: {
             title: "菜单1-1",
-            showLink: true
+            showLink: true,
+            icon: "flowbite:bell-ring-solid"
           }
         },
         {
@@ -54,7 +56,7 @@ export default {
           name: "Menu1-2",
           meta: {
             title: "菜单1-2",
-            showParent: true
+            icon: "flowbite:bug-solid"
           }
         }
       ]
