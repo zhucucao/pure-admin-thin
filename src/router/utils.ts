@@ -198,6 +198,7 @@ function handleAsyncRoutes(routeList) {
 
 /** 初始化路由（`new Promise` 写法防止在异步请求中造成无限循环）*/
 function initRouter() {
+  console.log("3.initRouter 登录前初始化路由开始");
   if (getConfig()?.CachingAsyncRoutes) {
     // 开启动态路由缓存本地localStorage
     const key = "async-routes";
@@ -219,7 +220,9 @@ function initRouter() {
   } else {
     return new Promise(resolve => {
       getAsyncRoutes().then(({ data }) => {
+        console.log("4.initRouter 获取路由:", data);
         handleAsyncRoutes(cloneDeep(data));
+        console.log("5.initRouter 处理路由,router: ", router.getRoutes());
         resolve(router);
       });
     });
@@ -309,7 +312,9 @@ function handleAliveRoute({ name }: ToRouteType, mode?: string) {
 function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
   if (!arrRoutes || !arrRoutes.length) return;
   const modulesRoutesKeys = Object.keys(modulesRoutes);
+  console.log("KKKKK: ", arrRoutes);
   arrRoutes.forEach((v: RouteRecordRaw) => {
+    console.log("@@@@@: ", v);
     // 将backstage属性加入meta，标识此路由为后端返回路由
     v.meta.backstage = true;
     // 父级的redirect属性取值：如果子级存在且父级的redirect属性不存在，默认取第一个子级的path；如果子级存在且父级的redirect属性存在，取存在的redirect属性，会覆盖默认值

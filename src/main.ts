@@ -30,6 +30,8 @@ Object.keys(directives).forEach(key => {
   app.directive(key, (directives as { [key: string]: Directive })[key]);
 });
 
+console.log("2.app挂载前,路由: ", router.getRoutes());
+
 // 全局注册@iconify/vue图标库
 import {
   IconifyIconOffline,

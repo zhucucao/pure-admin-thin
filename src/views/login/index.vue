@@ -53,6 +53,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
         })
         .then(res => {
           if (res.success) {
+            debugger;
             // 获取后端路由
             return initRouter().then(() => {
               disabled.value = true;
